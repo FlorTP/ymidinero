@@ -1,0 +1,90 @@
+<app-header></app-header>
+<main>
+  <section>
+    <div class="container">
+      <form autocomplete="off" #f="ngForm" [formGroup]="formPresupuesto">
+        <div class="mt-4">
+          <h1>Prespuesto - {{selectMes | uppercase}} </h1>
+        </div>
+        <div class="row mt-4">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <button class="btn_opcion" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFechas"
+              aria-expanded="false" aria-controls="collapseFechas">
+              Fechas
+            </button>
+            <button class="btn_opcion mx-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseIngresos"
+              aria-expanded="false" aria-controls="collapseIngresos">
+              Ingresos
+            </button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+            <div class="collapse mt-5" id="collapseFechas">
+              <div class="card card-body">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col" colspan="2" class="text-center">
+                        <h2>{{selectMes | uppercase}}</h2>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">Año</th>
+                      <td>
+                        <input class="" formControlName="anio" value="2024">
+                      </td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Mes</th>
+                      <td>
+                        <select class="form-select" formControlName="selectMeses" (change)="seleccionarMes($event)">
+                          <option *ngFor="let mes of meses">{{ mes.meses }}</option>
+                        </select>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+            <div class="collapse mt-5" id="collapseIngresos">
+              <div class="row">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-right">
+                  <button type="button" (click)="agregarIngreso()" class="bg-transparent border-0 mb-2">
+                    <label class="lbl_add_ingreso mx-2">Agregar</label>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 20 20">
+                      <path fill="#0fa958" d="M11 9V5H9v4H5v2h4v4h2v-4h4V9zm-1 11a10 10 0 1 1 0-20a10 10 0 0 1 0 20" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <div class="card card-body">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col" class="text-center">INGRESOS</th>
+                      <th scope="col" class="text-center">ACTUAL</th>
+                    </tr>
+                  </thead>
+                  <tbody formArrayName="IngresosArray">
+                    <tr *ngFor="let ingreso of ingresosFormArray.controls; let i = index" [formGroupName]="i">
+                      <td><input type="text" class="ipt_ingresos" formControlName="descripcion"></td>
+                      <td><input type="text" class="ipt_ingresos" formControlName="monto" pattern="moneyPattern"></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>
+<pre>{{ formPresupuesto.value | json }}</pre>

@@ -1,0 +1,34 @@
+.btn_opcion{
+  background-color: #F2F2F2;
+  border: none;
+  border-radius: 5px;
+  color: #2E81C9;
+  width: 200px;
+  height: 50px;
+  font-family: 'Quicksand';
+  font-weight: bold;
+  font-size: medium;
+}
+.btn_opcion:hover{
+  background-color: #16498C;
+  color: #fff;
+  font-family: 'Quicksand';
+  font-weight: bold;
+  font-size: medium;
+}
+.lbl_add_ingreso{
+  font-family: 'Quicksand';
+  font-weight: bold;
+  font-size: medium;
+}
+.ipt_ingresos{
+  background-color: #fff;
+  color: #26292E;
+  font-family: 'Quicksand';
+  font-size: 14px;
+  border: none;
+  border-bottom-style: solid;
+  border-bottom-color: #2E81C9;
+  width: 100%;
+  height: 30px;
+}
